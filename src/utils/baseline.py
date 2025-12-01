@@ -63,3 +63,7 @@ def train_and_evaluate(features: List[np.ndarray], labels: List[str], test_size:
     probs = counts / counts.sum()
     random_pred = rng.choice(values, size=y_test.shape[0], p=probs)
     random_acc = float((random_pred == y_test).mean()) if y_test.size > 0 else 0.0
+
+    # Convert back to original string labels for outputs
+    y_test_str = [int_to_str[int(v)] for v in y_test]
+    y_pred_str = [int_to_str[int(v)] for v in y_pred_int]
