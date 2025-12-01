@@ -48,3 +48,13 @@ def train_and_evaluate(features: List[np.ndarray], labels: List[str], test_size:
     num_classes = len(str_to_int)
     centroids = _train_centroids(X_train_std, y_train, num_classes)
     y_pred_int = _predict_centroids(X_test_std, centroids)
+
+    acc = float((y_pred_int == y_test).mean()) if y_test.size > 0 else 0.0
+
+    # Baselines
+    rng = np.random.RandomState(random_state)
+    # Majority baseline from training distribution
+    values, counts = np.unique(y_train, return_counts=True)
+    majority_class = int(values[np.argmax(counts)])
+    majority_pred = np.full_like(y_test, fill_value=majority_class)
+    majority_acc = float((majority_pred == y_test).mean()) if y_test.size > 0 else 0.0
