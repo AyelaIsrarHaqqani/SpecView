@@ -30,3 +30,12 @@ def _predict_centroids(X: np.ndarray, centroids: np.ndarray) -> np.ndarray:
     cross = X @ centroids.T                                 # (n, k)
     d2 = x2 - 2 * cross + mu2                               # (n, k)
     return np.argmin(d2, axis=1)
+
+def train_and_evaluate(features: List[np.ndarray], labels: List[str], test_size: float = 0.2, random_state: int = 42):
+    X = np.vstack([np.asarray(f, dtype=np.float32).reshape(1, -1) for f in features])
+    y_int, str_to_int, int_to_str = _encode_labels(labels)
+
+    # Stratified split
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y_int, test_size=test_size, random_state=random_state, stratify=y_int
+    )
