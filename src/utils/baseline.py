@@ -39,3 +39,8 @@ def train_and_evaluate(features: List[np.ndarray], labels: List[str], test_size:
     X_train, X_test, y_train, y_test = train_test_split(
         X, y_int, test_size=test_size, random_state=random_state, stratify=y_int
     )
+
+    # Standardize features using train statistics
+    scaler = StandardScaler()
+    X_train_std = scaler.fit_transform(X_train)
+    X_test_std = scaler.transform(X_test)
