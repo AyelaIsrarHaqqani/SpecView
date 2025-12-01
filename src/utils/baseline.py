@@ -44,3 +44,7 @@ def train_and_evaluate(features: List[np.ndarray], labels: List[str], test_size:
     scaler = StandardScaler()
     X_train_std = scaler.fit_transform(X_train)
     X_test_std = scaler.transform(X_test)
+
+    num_classes = len(str_to_int)
+    centroids = _train_centroids(X_train_std, y_train, num_classes)
+    y_pred_int = _predict_centroids(X_test_std, centroids)
