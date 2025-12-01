@@ -58,3 +58,8 @@ def train_and_evaluate(features: List[np.ndarray], labels: List[str], test_size:
     majority_class = int(values[np.argmax(counts)])
     majority_pred = np.full_like(y_test, fill_value=majority_class)
     majority_acc = float((majority_pred == y_test).mean()) if y_test.size > 0 else 0.0
+
+    # Random baseline sampled from training label prior
+    probs = counts / counts.sum()
+    random_pred = rng.choice(values, size=y_test.shape[0], p=probs)
+    random_acc = float((random_pred == y_test).mean()) if y_test.size > 0 else 0.0
