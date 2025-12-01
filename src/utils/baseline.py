@@ -67,3 +67,21 @@ def train_and_evaluate(features: List[np.ndarray], labels: List[str], test_size:
     # Convert back to original string labels for outputs
     y_test_str = [int_to_str[int(v)] for v in y_test]
     y_pred_str = [int_to_str[int(v)] for v in y_pred_int]
+
+    model = {
+        "type": "nearest_centroid",
+        "centroids": centroids,
+        "label_encoder": {
+            "str_to_int": str_to_int,
+            "int_to_str": int_to_str,
+        },
+        "standardizer": scaler,
+        "accuracy": acc,
+        "baselines": {
+            "majority_accuracy": majority_acc,
+            "random_accuracy": random_acc,
+        },
+    }
+
+    return model, y_test_str, y_pred_str
+
