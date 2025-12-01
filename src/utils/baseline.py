@@ -20,3 +20,13 @@ def _train_centroids(X: np.ndarray, y: np.ndarray, num_classes: int) -> np.ndarr
         else:
             centroids.append(X[class_mask].mean(axis=0))
     return np.vstack(centroids)
+
+def _predict_centroids(X: np.ndarray, centroids: np.ndarray) -> np.ndarray:
+    # Compute squared Euclidean distances to each centroid
+    # X shape: (n_samples, n_features), centroids: (n_classes, n_features)
+    # Using (x - mu)^2 = x^2 - 2x·mu + mu^2
+    x2 = (X ** 2).sum(axis=1, keepdims=True)                # (n, 1)
+    mu2 = (centroids ** 2).sum(axis=1, keepdims=True).T     # (1, k)
+    cross = X @ centroids.T                                 # (n, k)
+    d2 = x2 - 2 * cross + mu2                               # (n, k)
+    return np.argmin(d2, axis=1)
