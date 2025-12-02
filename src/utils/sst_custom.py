@@ -19,11 +19,6 @@ def singular_spectrum_transform(signal, window=30, lag=10, n_components=10):
         X_past = np.lib.stride_tricks.sliding_window_view(signal[t - window:t], lag)
         X_future = np.lib.stride_tricks.sliding_window_view(signal[t:t + window], lag)
 
-    for t in range(window, N - window):
-        # Build past and future matrices
-        X_past = np.lib.stride_tricks.sliding_window_view(signal[t - window:t], lag)
-        X_future = np.lib.stride_tricks.sliding_window_view(signal[t:t + window], lag)
-
         # Singular Value Decomposition
         U_past, _, _ = svd(X_past, full_matrices=False)
         U_future, _, _ = svd(X_future, full_matrices=False)
