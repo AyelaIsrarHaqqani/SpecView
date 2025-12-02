@@ -7,5 +7,8 @@ def load_binary_file(filepath: str) -> np.ndarray:
     with open(filepath, 'rb') as f:
         data = np.frombuffer(f.read(), dtype=np.uint8)
     return data
+
+def load_image_as_signal(filepath: str) -> np.ndarray:
+    img = Image.open(filepath).convert('L')  # grayscale
     
 
