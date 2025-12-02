@@ -27,7 +27,13 @@ return load_binary_file(filepath)
 
 # Path via labels.csv
     if label_file and os.path.exists(label_file):
-
+    import pandas as pd
+        df = pd.read_csv(label_file)
+        for _, row in df.iterrows():
+            filepath = os.path.join(data_dir, row['filename'])
+            X.append(load_file_as_signal(filepath))
+            y.append(str(row['label']))
+        return X, y
 
 
 
