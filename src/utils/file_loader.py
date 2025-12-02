@@ -19,3 +19,6 @@ def load_file_as_signal(filepath: str) -> np.ndarray:
     return load_image_as_signal(filepath)
 return load_binary_file(filepath)
 
+def load_dataset(data_dir: str, label_file: Optional[str] = None) -> Tuple[List[np.ndarray], List[str]]:
+
+
