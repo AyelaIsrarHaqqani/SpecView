@@ -22,6 +22,8 @@ return load_binary_file(filepath)
     Load dataset either from a labels CSV (filename,label) or by inferring labels
     from a directory structure of the form: data_dir/<label>/<file>.
     """
+    X: List[np.ndarray] = []
+    y: List[str] = []
 
 def load_dataset(data_dir: str, label_file: Optional[str] = None) -> Tuple[List[np.ndarray], List[str]]:
 
