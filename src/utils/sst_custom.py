@@ -32,3 +32,6 @@ def singular_spectrum_transform(signal, window=30, lag=10, n_components=10):
         r = min(n_components, U_past.shape[1], U_future.shape[1])
         if r <= 0:
             continue
+        kappa = np.sum((U_past[:, :r].T @ U_future[:, :r]) ** 2)
+        scores[t] = 1 - (kappa / r)
+    return scores
