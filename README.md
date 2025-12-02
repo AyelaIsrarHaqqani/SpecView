@@ -27,7 +27,7 @@ The SpecView framework follows a multi-stage pipeline:
 
 ### Prerequisites
 * Python 3.8+
-* Required libraries: `numpy`, `pandas`, `scikit-learn`, `matplotlib`, `scipy` (See `requirements.txt`)
+* Required libraries: `numpy`, `pandas`, `scikit-learn`, `matplotlib`, `scipy` 
 
 ### Installation
 
