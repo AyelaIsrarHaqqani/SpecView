@@ -10,5 +10,6 @@ def load_binary_file(filepath: str) -> np.ndarray:
 
 def load_image_as_signal(filepath: str) -> np.ndarray:
     img = Image.open(filepath).convert('L')  # grayscale
-    
+    arr = np.asarray(img, dtype=np.float32).reshape(-1)
+    return arr
 
