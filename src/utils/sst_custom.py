@@ -27,3 +27,6 @@ def singular_spectrum_transform(signal, window=30, lag=10, n_components=10):
         # Singular Value Decomposition
         U_past, _, _ = svd(X_past, full_matrices=False)
         U_future, _, _ = svd(X_future, full_matrices=False)
+
+        # Projection similarity
+        r = min(n_components, U_past.shape[1], U_future.shape[1])
