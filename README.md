@@ -63,4 +63,4 @@ The SpecView framework follows a multi-stage pipeline:
 * **M Zeeshan** (2022644)
 
 **Course:** CY-471 Malware Analysis  
-**Institution:** GIK Institute of Engineering Sciences and Technology
+**Institution:** Ghulam Ishaq Khan Institute of Sciences and Technology, Swabi
