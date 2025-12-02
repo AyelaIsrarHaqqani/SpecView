@@ -35,6 +35,10 @@ return load_binary_file(filepath)
             y.append(str(row['label']))
         return X, y
 
+# Fallback: infer labels from subdirectories
+    if not os.path.isdir(data_dir):
+        raise FileNotFoundError(f"Data directory not found: {data_dir}")
+
 
 
 
