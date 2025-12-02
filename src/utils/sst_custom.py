@@ -15,3 +15,6 @@ def singular_spectrum_transform(signal, window=30, lag=10, n_components=10):
         return scores
 
     for t in range(window, N - window):
+        # Build past and future matrices
+        X_past = np.lib.stride_tricks.sliding_window_view(signal[t - window:t], lag)
+        X_future = np.lib.stride_tricks.sliding_window_view(signal[t:t + window], lag)
