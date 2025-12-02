@@ -18,6 +18,8 @@ def load_file_as_signal(filepath: str) -> np.ndarray:
     if ext in {'.png', '.jpg', '.jpeg', '.bmp', '.tif', '.tiff'}:
     return load_image_as_signal(filepath)
 return load_binary_file(filepath)
+
+def load_dataset(data_dir: str, label_file: Optional[str] = None) -> Tuple[List[np.ndarray], List[str]]:
      """
     Load dataset either from a labels CSV (filename,label) or by inferring labels
     from a directory structure of the form: data_dir/<label>/<file>.
@@ -39,11 +41,21 @@ return load_binary_file(filepath)
     if not os.path.isdir(data_dir):
         raise FileNotFoundError(f"Data directory not found: {data_dir}")
 
+    for label in sorted(os.listdir(data_dir)):
+        label_dir = os.path.join(data_dir, label)
+        if not os.path.isdir(label_dir):
+            continue
+        for fname in sorted(os.listdir(label_dir)):
+            filepath = os.path.join(label_dir, fname)
+            if not os.path.isfile(filepath):
+                continue
+            X.append(load_file_as_signal(filepath))
+            y.append(label)
+
+    return X, y
 
 
 
 
-
-def load_dataset(data_dir: str, label_file: Optional[str] = None) -> Tuple[List[np.ndarray], List[str]]:
 
 
