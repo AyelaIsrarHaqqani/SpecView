@@ -13,3 +13,5 @@ def singular_spectrum_transform(signal, window=30, lag=10, n_components=10):
         return scores
     if N - window <= window:
         return scores
+
+    for t in range(window, N - window):
