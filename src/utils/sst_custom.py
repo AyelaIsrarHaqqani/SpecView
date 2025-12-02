@@ -30,3 +30,5 @@ def singular_spectrum_transform(signal, window=30, lag=10, n_components=10):
 
         # Projection similarity
         r = min(n_components, U_past.shape[1], U_future.shape[1])
+        if r <= 0:
+            continue
