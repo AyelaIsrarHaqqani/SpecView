@@ -25,6 +25,15 @@ return load_binary_file(filepath)
     X: List[np.ndarray] = []
     y: List[str] = []
 
+# Path via labels.csv
+    if label_file and os.path.exists(label_file):
+
+
+
+
+
+
+
 def load_dataset(data_dir: str, label_file: Optional[str] = None) -> Tuple[List[np.ndarray], List[str]]:
 
 
