@@ -21,3 +21,4 @@ def singular_spectrum_transform(signal, window=30, lag=10, n_components=10):
 
     for t in range(window, N - window):
         # Build past and future matrices
+        X_past = np.lib.stride_tricks.sliding_window_view(signal[t - window:t], lag)
