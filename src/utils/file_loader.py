@@ -13,3 +13,8 @@ def load_image_as_signal(filepath: str) -> np.ndarray:
     arr = np.asarray(img, dtype=np.float32).reshape(-1)
     return arr
 
+def load_file_as_signal(filepath: str) -> np.ndarray:
+    ext = os.path.splitext(filepath)[1].lower()
+    if ext in {'.png', '.jpg', '.jpeg', '.bmp', '.tif', '.tiff'}:
+
+
