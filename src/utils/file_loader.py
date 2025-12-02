@@ -16,5 +16,6 @@ def load_image_as_signal(filepath: str) -> np.ndarray:
 def load_file_as_signal(filepath: str) -> np.ndarray:
     ext = os.path.splitext(filepath)[1].lower()
     if ext in {'.png', '.jpg', '.jpeg', '.bmp', '.tif', '.tiff'}:
-
+    return load_image_as_signal(filepath)
+return load_binary_file(filepath)
 
