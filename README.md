@@ -1,5 +1,6 @@
 
-# SpecView: Malware Spectrum Visualization Framework
+# SpecView: Malware Spectrum Visualization Framework with 
+Singular Spectrum Transforma on
 
 **SpecView** is a universal, efficient, and accurate malware detection and classification framework. It utilizes **Singular Spectrum Transformation (SST)** to visualize malware behavior as 1D time-series spectra and employs **Particle Swarm Optimization (PSO)** to fine-tune features for Machine Learning classification.
 
