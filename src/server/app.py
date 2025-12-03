@@ -35,3 +35,6 @@ def create_app() -> FastAPI:
     @app.get("/health")
     def health():
         return {"status": "ok"}
+
+    @app.post("/infer")
+    async def infer(file: UploadFile = File(...)):
