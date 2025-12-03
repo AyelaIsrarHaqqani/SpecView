@@ -57,3 +57,5 @@ def create_app() -> FastAPI:
                     os.remove(tmp_path)
             except Exception:
                 pass
+
+    return app
