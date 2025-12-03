@@ -44,3 +44,8 @@ def create_app() -> FastAPI:
             with tempfile.NamedTemporaryFile(suffix=suffix, delete=False) as tmp:
                 tmp.write(await file.read())
                 tmp_path = tmp.name
+
+            # Convert to 1D signal and predict
+            signal = load_signal(tmp_path)
+            label, confidence = predict_signal(signal, model, scaler, label_encoder)
+            return JSONResponse({"label": label, "confidence": float(confidence)})
