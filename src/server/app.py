@@ -16,3 +16,8 @@ def create_app() -> FastAPI:
     # Enable CORS for local dev (adjust origins as needed)
     app.add_middleware(
         CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
