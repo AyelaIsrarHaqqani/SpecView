@@ -12,3 +12,7 @@ from src.inference.run_inference import load_artifacts, load_signal, predict_sig
 
 def create_app() -> FastAPI:
     app = FastAPI(title="SpecView Inference API", version="1.0.0")
+
+    # Enable CORS for local dev (adjust origins as needed)
+    app.add_middleware(
+        CORSMiddleware,
