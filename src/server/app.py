@@ -31,3 +31,7 @@ def create_app() -> FastAPI:
         sst_params_path=os.getenv("SST_PARAMS_PATH", "sst_params.json"),
         device=os.getenv("DEVICE", None),
     )
+
+    @app.get("/health")
+    def health():
+        return {"status": "ok"}
