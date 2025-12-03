@@ -49,3 +49,11 @@ def create_app() -> FastAPI:
             signal = load_signal(tmp_path)
             label, confidence = predict_signal(signal, model, scaler, label_encoder)
             return JSONResponse({"label": label, "confidence": float(confidence)})
+        except Exception as e:
+            raise HTTPException(status_code=400, detail=str(e))
+        finally:
+            try:
+                if 'tmp_path' in locals() and os.path.exists(tmp_path):
+                    os.remove(tmp_path)
+            except Exception:
+                pass
