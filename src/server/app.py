@@ -25,3 +25,5 @@ def create_app() -> FastAPI:
 
     # Load artifacts once at startup
     model, scaler, label_encoder, _, device = load_artifacts(
+        model_path=os.getenv("MODEL_PATH", "best_cnn1d.pth"),
+        scaler_path=os.getenv("SCALER_PATH", "scaler.pkl"),
