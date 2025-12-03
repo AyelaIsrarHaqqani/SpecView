@@ -38,3 +38,9 @@ def create_app() -> FastAPI:
 
     @app.post("/infer")
     async def infer(file: UploadFile = File(...)):
+        try:
+            # Persist upload to a temporary file to reuse existing loader
+            suffix = os.path.splitext(file.filename or "")[1].lower()
+            with tempfile.NamedTemporaryFile(suffix=suffix, delete=False) as tmp:
+                tmp.write(await file.read())
+                tmp_path = tmp.name
