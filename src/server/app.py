@@ -20,4 +20,8 @@ def create_app() -> FastAPI:
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
+    )_headers=["*"],
     )
+
+    # Load artifacts once at startup
+    model, scaler, label_encoder, _, device = load_artifacts(
