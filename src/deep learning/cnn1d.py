@@ -33,3 +33,9 @@ class SSTDataset(Dataset):
 class Simple1DCNN(nn.Module):
     def __init__(self, in_channels=1, num_classes=10, base_filters=64):
         super().__init__()
+
+        self.net = nn.Sequential(
+            nn.Conv1d(in_channels, base_filters, kernel_size=7, padding=3),
+            nn.BatchNorm1d(base_filters),
+            nn.ReLU(),
+            nn.MaxPool1d(2),
