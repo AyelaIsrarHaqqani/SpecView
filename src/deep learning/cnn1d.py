@@ -131,3 +131,13 @@ def train_model(spectra, labels, num_classes, config):
             optimizer.step()
             running_loss += loss.item() * xb.size(0)
         avg_train_loss = running_loss / len(train_loader.dataset)
+
+        # Validation
+        model.eval()
+        preds, trues = [], []
+        with torch.no_grad():
+            for xb, yb in val_loader:
+                xb, yb = xb.to(device), yb.to(device)
+                out = model(xb)
+                preds.append(out.argmax(dim=1).cpu().numpy())
+                trues.append(yb.cpu().numpy())
