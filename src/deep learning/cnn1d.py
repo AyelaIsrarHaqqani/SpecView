@@ -70,3 +70,13 @@ def train_model(spectra, labels, num_classes, config):
     device = config.get("device", "cpu")
     device = torch.device(device)
     log_path = config.get("log_path")
+
+    def _log(message: str):
+        print(message)
+        if log_path:
+            try:
+                with open(log_path, "a") as f:
+                    f.write(message + "\n")
+            except Exception:
+                # If logging fails, continue without interrupting training
+                pass
