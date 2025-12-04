@@ -105,3 +105,6 @@ def train_model(spectra, labels, num_classes, config):
 
     train_loader = DataLoader(train_dataset, batch_size=config['batch_size'], sampler=sampler, num_workers=2)
     val_loader = DataLoader(val_dataset, batch_size=config['batch_size'], shuffle=False, num_workers=2)
+
+    model = Simple1DCNN(in_channels=1, num_classes=num_classes, base_filters=config.get("base_filters", 64))
+    model.to(device)
