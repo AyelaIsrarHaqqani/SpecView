@@ -20,7 +20,7 @@ class SSTDataset(Dataset):
 
     def __len__(self):
         return len(self.y)
-    
+
     def __getitem__(self, idx):
         x = self.X[idx]
         if self.transform:
@@ -28,12 +28,11 @@ class SSTDataset(Dataset):
         # add channel dim
         x = np.expand_dims(x, axis=0)   # (1, L)
         return torch.from_numpy(x), torch.tensor(self.y[idx])
-    
+
 # -------- Model --------
 class Simple1DCNN(nn.Module):
     def __init__(self, in_channels=1, num_classes=10, base_filters=64):
         super().__init__()
-
         self.net = nn.Sequential(
             nn.Conv1d(in_channels, base_filters, kernel_size=7, padding=3),
             nn.BatchNorm1d(base_filters),
@@ -49,7 +48,7 @@ class Simple1DCNN(nn.Module):
             nn.BatchNorm1d(base_filters*4),
             nn.ReLU(),
             nn.AdaptiveAvgPool1d(1),  # -> (B, C, 1)
-            )
+        )
         self.classifier = nn.Sequential(
             nn.Flatten(),
             nn.Dropout(0.4),
@@ -63,7 +62,6 @@ class Simple1DCNN(nn.Module):
         x = self.net(x)
         x = self.classifier(x)
         return x
-
 
 # -------- Training loop --------
 def train_model(spectra, labels, num_classes, config):
@@ -118,7 +116,6 @@ def train_model(spectra, labels, num_classes, config):
     best_val_f1 = 0.0
     best_val_acc = 0.0
     best_model = None
-
     for epoch in range(config['epochs']):
         model.train()
         running_loss = 0.0
@@ -141,7 +138,6 @@ def train_model(spectra, labels, num_classes, config):
                 out = model(xb)
                 preds.append(out.argmax(dim=1).cpu().numpy())
                 trues.append(yb.cpu().numpy())
-
         preds = np.concatenate(preds)
         trues = np.concatenate(trues)
         val_f1 = f1_score(trues, preds, average='macro')
@@ -156,7 +152,7 @@ def train_model(spectra, labels, num_classes, config):
             best_model = model.state_dict().copy()
             torch.save(best_model, config.get('checkpoint_path', 'best_cnn1d.pth'))
 
-        _log(f"Best val_f1: {best_val_f1:.4f}")
+    _log(f"Best val_f1: {best_val_f1:.4f}")
     _log(f"Best val_accuracy: {best_val_acc:.4f}")
     # return best model path
     ckpt = config.get('checkpoint_path', 'best_cnn1d.pth')
