@@ -39,3 +39,8 @@ class Simple1DCNN(nn.Module):
             nn.BatchNorm1d(base_filters),
             nn.ReLU(),
             nn.MaxPool1d(2),
+
+            nn.Conv1d(base_filters, base_filters*2, kernel_size=5, padding=2),
+            nn.BatchNorm1d(base_filters*2),
+            nn.ReLU(),
+            nn.MaxPool1d(2),
