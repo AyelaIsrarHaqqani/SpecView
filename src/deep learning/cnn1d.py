@@ -20,3 +20,11 @@ class SSTDataset(Dataset):
 
     def __len__(self):
         return len(self.y)
+    
+    def __getitem__(self, idx):
+        x = self.X[idx]
+        if self.transform:
+            x = self.transform(x)
+        # add channel dim
+        x = np.expand_dims(x, axis=0)   # (1, L)
+        return torch.from_numpy(x), torch.tensor(self.y[idx])
