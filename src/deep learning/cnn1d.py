@@ -108,3 +108,9 @@ def train_model(spectra, labels, num_classes, config):
 
     model = Simple1DCNN(in_channels=1, num_classes=num_classes, base_filters=config.get("base_filters", 64))
     model.to(device)
+
+    # compute class weights for loss (alternative)
+    weights = torch.tensor((labels.size / (num_classes * class_counts))).float() if False else None
+    criterion = nn.CrossEntropyLoss()  # or with weight=torch.tensor(...)
+    optimizer = torch.optim.Adam(model.parameters(), lr=config['lr'])
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'max', patience=4, factor=0.5)
