@@ -96,3 +96,9 @@ def train_model(spectra, labels, num_classes, config):
 
     train_dataset = SSTDataset(X_train, y_train)
     val_dataset = SSTDataset(X_val, y_val)
+
+    # Weighted sampler for imbalance
+    class_counts = np.bincount(y_train)
+    class_weights = 1. / (class_counts + 1e-9)
+    sample_weights = class_weights[y_train]
+    sampler = WeightedRandomSampler(weights=sample_weights, num_samples=len(sample_weights), replacement=True)
