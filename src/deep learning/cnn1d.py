@@ -118,3 +118,7 @@ def train_model(spectra, labels, num_classes, config):
     best_val_f1 = 0.0
     best_val_acc = 0.0
     best_model = None
+
+    for epoch in range(config['epochs']):
+        model.train()
+        running_loss = 0.0
