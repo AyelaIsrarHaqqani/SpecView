@@ -130,3 +130,4 @@ def train_model(spectra, labels, num_classes, config):
             loss.backward()
             optimizer.step()
             running_loss += loss.item() * xb.size(0)
+        avg_train_loss = running_loss / len(train_loader.dataset)
