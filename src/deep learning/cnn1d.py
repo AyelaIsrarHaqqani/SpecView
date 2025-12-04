@@ -155,3 +155,10 @@ def train_model(spectra, labels, num_classes, config):
             best_val_acc = val_acc
             best_model = model.state_dict().copy()
             torch.save(best_model, config.get('checkpoint_path', 'best_cnn1d.pth'))
+
+        _log(f"Best val_f1: {best_val_f1:.4f}")
+    _log(f"Best val_accuracy: {best_val_acc:.4f}")
+    # return best model path
+    ckpt = config.get('checkpoint_path', 'best_cnn1d.pth')
+    _log(f"Checkpoint: {ckpt}")
+    return ckpt
