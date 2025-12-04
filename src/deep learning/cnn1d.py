@@ -114,3 +114,7 @@ def train_model(spectra, labels, num_classes, config):
     criterion = nn.CrossEntropyLoss()  # or with weight=torch.tensor(...)
     optimizer = torch.optim.Adam(model.parameters(), lr=config['lr'])
     scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'max', patience=4, factor=0.5)
+
+    best_val_f1 = 0.0
+    best_val_acc = 0.0
+    best_model = None
