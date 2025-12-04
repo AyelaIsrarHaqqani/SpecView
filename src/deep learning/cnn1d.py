@@ -122,3 +122,11 @@ def train_model(spectra, labels, num_classes, config):
     for epoch in range(config['epochs']):
         model.train()
         running_loss = 0.0
+        for xb, yb in tqdm(train_loader, desc=f"Epoch {epoch+1}/{config['epochs']}"):
+            xb, yb = xb.to(device), yb.to(device)
+            optimizer.zero_grad()
+            logits = model(xb)
+            loss = criterion(logits, yb)
+            loss.backward()
+            optimizer.step()
+            running_loss += loss.item() * xb.size(0)
