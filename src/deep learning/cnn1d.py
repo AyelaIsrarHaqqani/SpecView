@@ -141,3 +141,9 @@ def train_model(spectra, labels, num_classes, config):
                 out = model(xb)
                 preds.append(out.argmax(dim=1).cpu().numpy())
                 trues.append(yb.cpu().numpy())
+
+        preds = np.concatenate(preds)
+        trues = np.concatenate(trues)
+        val_f1 = f1_score(trues, preds, average='macro')
+        val_acc = float((preds == trues).mean()) if trues.size > 0 else 0.0
+        scheduler.step(val_f1)
