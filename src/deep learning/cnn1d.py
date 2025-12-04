@@ -17,3 +17,6 @@ class SSTDataset(Dataset):
         self.X = spectra.astype(np.float32)
         self.y = labels.astype(np.int64)
         self.transform = transform
+
+    def __len__(self):
+        return len(self.y)
