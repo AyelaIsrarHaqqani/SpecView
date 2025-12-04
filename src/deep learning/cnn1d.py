@@ -28,3 +28,8 @@ class SSTDataset(Dataset):
         # add channel dim
         x = np.expand_dims(x, axis=0)   # (1, L)
         return torch.from_numpy(x), torch.tensor(self.y[idx])
+    
+# -------- Model --------
+class Simple1DCNN(nn.Module):
+    def __init__(self, in_channels=1, num_classes=10, base_filters=64):
+        super().__init__()
