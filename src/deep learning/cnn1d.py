@@ -49,3 +49,14 @@ class Simple1DCNN(nn.Module):
             nn.BatchNorm1d(base_filters*4),
             nn.ReLU(),
             nn.AdaptiveAvgPool1d(1),  # -> (B, C, 1)
+            )
+        self.classifier = nn.Sequential(
+            nn.Flatten(),
+            nn.Dropout(0.4),
+            nn.Linear(base_filters*4, 256),
+            nn.ReLU(),
+            nn.Dropout(0.3),
+            nn.Linear(256, num_classes)
+        )
+
+
