@@ -59,4 +59,9 @@ class Simple1DCNN(nn.Module):
             nn.Linear(256, num_classes)
         )
 
+    def forward(self, x):
+        x = self.net(x)
+        x = self.classifier(x)
+        return x
+
 
