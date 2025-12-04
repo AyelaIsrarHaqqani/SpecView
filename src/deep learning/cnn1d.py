@@ -65,3 +65,8 @@ class Simple1DCNN(nn.Module):
         return x
 
 
+# -------- Training loop --------
+def train_model(spectra, labels, num_classes, config):
+    device = config.get("device", "cpu")
+    device = torch.device(device)
+    log_path = config.get("log_path")
