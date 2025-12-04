@@ -80,3 +80,13 @@ def train_model(spectra, labels, num_classes, config):
             except Exception:
                 # If logging fails, continue without interrupting training
                 pass
+
+    # Initialize log header
+    if log_path:
+        try:
+            with open(log_path, "w") as f:
+                f.write(f"[{datetime.now().isoformat()}] 1D CNN Training Start\n")
+                f.write(f"Config: epochs={config.get('epochs')}, batch_size={config.get('batch_size')}, lr={config.get('lr')}, base_filters={config.get('base_filters', 64)}, device={device}\n")
+                f.write(f"Num samples={spectra.shape[0]}, Num classes={num_classes}, Feature length={spectra.shape[1]}\n")
+        except Exception:
+            pass
