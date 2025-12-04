@@ -147,3 +147,11 @@ def train_model(spectra, labels, num_classes, config):
         val_f1 = f1_score(trues, preds, average='macro')
         val_acc = float((preds == trues).mean()) if trues.size > 0 else 0.0
         scheduler.step(val_f1)
+
+        _log(f"Epoch {epoch+1}: train_loss={avg_train_loss:.4f}, val_f1={val_f1:.4f}, val_acc={val_acc:.4f}")
+
+        if val_f1 > best_val_f1:
+            best_val_f1 = val_f1
+            best_val_acc = val_acc
+            best_model = model.state_dict().copy()
+            torch.save(best_model, config.get('checkpoint_path', 'best_cnn1d.pth'))
