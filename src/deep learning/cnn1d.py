@@ -102,3 +102,6 @@ def train_model(spectra, labels, num_classes, config):
     class_weights = 1. / (class_counts + 1e-9)
     sample_weights = class_weights[y_train]
     sampler = WeightedRandomSampler(weights=sample_weights, num_samples=len(sample_weights), replacement=True)
+
+    train_loader = DataLoader(train_dataset, batch_size=config['batch_size'], sampler=sampler, num_workers=2)
+    val_loader = DataLoader(val_dataset, batch_size=config['batch_size'], shuffle=False, num_workers=2)
