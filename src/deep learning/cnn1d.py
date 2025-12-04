@@ -90,3 +90,9 @@ def train_model(spectra, labels, num_classes, config):
                 f.write(f"Num samples={spectra.shape[0]}, Num classes={num_classes}, Feature length={spectra.shape[1]}\n")
         except Exception:
             pass
+
+    X_train, X_val, y_train, y_val = train_test_split(
+        spectra, labels, test_size=0.15, stratify=labels, random_state=42)
+
+    train_dataset = SSTDataset(X_train, y_train)
+    val_dataset = SSTDataset(X_val, y_val)
