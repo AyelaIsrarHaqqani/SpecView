@@ -8,3 +8,6 @@ def fitness_function(params, signals):
     # Enforce robust bounds before evaluation
 w = int(max(10, min(w, 100)))
     k = int(max(5, min(k, 20)))
+l = int(max(1, min(l, 10)))
+    spectra = [apply_sst(s, w, l, k) for s in signals]
+    total_dist = 0
