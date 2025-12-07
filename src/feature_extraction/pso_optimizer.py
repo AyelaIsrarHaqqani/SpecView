@@ -22,5 +22,8 @@ realistic_lb = np.array([10.0, 5.0, 1.0])
     realistic_ub = np.array([100.0, 20.0, 10.0])
 
  lb_arr = np.array(lb, dtype=float).reshape(3)
+lb_final = np.maximum(lb_arr, realistic_lb)
+    ub_final = np.minimum(ub_arr, realistic_ub)
+
     ub_arr = np.array(ub, dtype=float).reshape(3)
 
