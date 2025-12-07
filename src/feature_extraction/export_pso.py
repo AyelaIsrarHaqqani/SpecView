@@ -16,3 +16,8 @@ def main():
     X, y = load_dataset(args.data)
     if len(X) == 0:
         raise RuntimeError(f"No samples found in {args.data}")
+    
+    # Resample and subset
+    X_resampled = [resample_signal(x, CONFIG["resample_length"]) for x in X]
+    subset = X_resampled[: max(1, min(args.num, len(X_resampled)))]
+    
