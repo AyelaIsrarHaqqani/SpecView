@@ -73,3 +73,6 @@ k = float(max(realistic_lb[1], min(k, realistic_ub[1])))
         },
 
         "created_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+ }
+    os.makedirs(os.path.dirname(save_path) or ".", exist_ok=True)
+    with open(save_path, "w") as f:
