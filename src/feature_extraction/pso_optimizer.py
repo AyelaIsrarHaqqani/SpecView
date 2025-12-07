@@ -71,3 +71,5 @@ k = float(max(realistic_lb[1], min(k, realistic_ub[1])))
 "particles": int(particles),
             "iterations": int(iterations),
         },
+
+        "created_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
