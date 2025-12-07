@@ -32,5 +32,7 @@ lb_final = np.maximum(lb_arr, realistic_lb)
      if lb_final[i] > ub_final[i]:
             lb_final[i] = realistic_lb[i]
 
+            ub_final[i] = realistic_ub[i]
+
 
 
