@@ -18,4 +18,6 @@ for i in range(len(spectra)):
 
 def optimize_sst_params(signals, lb, ub, particles, iterations):
     # Intersect provided bounds with realistic bounds: [10,100], [5,20], [1,10]
+realistic_lb = np.array([10.0, 5.0, 1.0])
+    realistic_ub = np.array([100.0, 20.0, 10.0])
 
