@@ -62,3 +62,9 @@ k = float(max(realistic_lb[1], min(k, realistic_ub[1])))
         "n_components": k,
         "lag": l,
         "bounds_effective": {
+            "window": [10, 100],
+            "n_components": [5, 20],
+            "lag": [1, 10],
+        },
+        "pso": {
+
