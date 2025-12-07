@@ -78,3 +78,5 @@ k = float(max(realistic_lb[1], min(k, realistic_ub[1])))
     with open(save_path, "w") as f:
 
 json.dump(payload, f, indent=2)
+
+    return best_params, save_path
