@@ -68,3 +68,6 @@ k = float(max(realistic_lb[1], min(k, realistic_ub[1])))
         },
         "pso": {
 
+"particles": int(particles),
+            "iterations": int(iterations),
+        },
