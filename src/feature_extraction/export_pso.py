@@ -27,3 +27,8 @@ def main():
     ub = pso_cfg["ub"]
     particles = pso_cfg["particles"]
     iterations = pso_cfg["iterations"]
+
+    # Optimize and save
+    best_params, save_path = optimize_sst_params_and_save(
+        subset, lb=lb, ub=ub, particles=particles, iterations=iterations, save_path=args.out
+    )
