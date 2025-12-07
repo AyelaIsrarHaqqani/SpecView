@@ -9,4 +9,6 @@ from .pso_optimizer import optimize_sst_params_and_save
 def main():
     parser = argparse.ArgumentParser(description="Run PSO to optimize SST params and save them to a file.")
     parser.add_argument("--data", default="malimg_dataset/train", help="Path to dataset root (label subdirs).")
-    
+    parser.add_argument("--out", default="artifacts/pso_params.json", help="Path to write JSON with best params.")
+    parser.add_argument("--num", type=int, default=64, help="Number of samples to use for PSO (subset).")
+    args = parser.parse_args()
