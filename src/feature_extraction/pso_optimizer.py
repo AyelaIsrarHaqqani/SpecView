@@ -42,7 +42,9 @@ pso = PSO(func=lambda x: fitness_function(x, signals),
 # Clip final params to valid bounds
     w, k, l = map(float, best_params)
     w = float(max(realistic_lb[0], min(w, realistic_ub[0])))
+def optimize_sst_params_and_save(signals, lb, ub, particles, iterations, save_path: str):
 
 k = float(max(realistic_lb[1], min(k, realistic_ub[1])))
     l = float(max(realistic_lb[2], min(l, realistic_ub[2])))
     return np.array([w, k, l], dtype=float)
+
