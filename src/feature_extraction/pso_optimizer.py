@@ -35,4 +35,7 @@ lb_final = np.maximum(lb_arr, realistic_lb)
             ub_final[i] = realistic_ub[i]
 
 
+pso = PSO(func=lambda x: fitness_function(x, signals),
+              n_dim=3, lb=lb_final, ub=ub_final, pop=particles, max_iter=iterations)
+    best_params, _ = pso.run()
 
