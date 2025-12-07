@@ -21,3 +21,6 @@ def optimize_sst_params(signals, lb, ub, particles, iterations):
 realistic_lb = np.array([10.0, 5.0, 1.0])
     realistic_ub = np.array([100.0, 20.0, 10.0])
 
+ lb_arr = np.array(lb, dtype=float).reshape(3)
+    ub_arr = np.array(ub, dtype=float).reshape(3)
+
