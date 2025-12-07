@@ -11,3 +11,7 @@ w = int(max(10, min(w, 100)))
 l = int(max(1, min(l, 10)))
     spectra = [apply_sst(s, w, l, k) for s in signals]
     total_dist = 0
+for i in range(len(spectra)):
+        for j in range(i+1, len(spectra)):
+            total_dist += euclidean(spectra[i], spectra[j])
+    return total_dist
