@@ -58,3 +58,7 @@ k = float(max(realistic_lb[1], min(k, realistic_ub[1])))
     w, k, l = map(int, best_params)
     payload = {
 
+"window": w,
+        "n_components": k,
+        "lag": l,
+        "bounds_effective": {
