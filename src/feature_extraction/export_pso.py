@@ -37,3 +37,6 @@ def main():
     print(f"Saved PSO params to {save_path}")
     print(f"Optimized SST Params -> window={w}, lag={l}, n_components={k}")
 
+if __name__ == "__main__":
+    main()
+
