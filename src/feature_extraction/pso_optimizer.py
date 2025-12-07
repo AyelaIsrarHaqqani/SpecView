@@ -15,3 +15,7 @@ for i in range(len(spectra)):
         for j in range(i+1, len(spectra)):
             total_dist += euclidean(spectra[i], spectra[j])
     return total_dist
+
+def optimize_sst_params(signals, lb, ub, particles, iterations):
+    # Intersect provided bounds with realistic bounds: [10,100], [5,20], [1,10]
+
