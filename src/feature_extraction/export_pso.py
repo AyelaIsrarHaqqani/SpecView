@@ -21,3 +21,7 @@ def main():
     X_resampled = [resample_signal(x, CONFIG["resample_length"]) for x in X]
     subset = X_resampled[: max(1, min(args.num, len(X_resampled)))]
     
+    # Use CONFIG pso settings
+    pso_cfg = CONFIG["pso"]
+    lb = pso_cfg["lb"]
+    ub = pso_cfg["ub"]
