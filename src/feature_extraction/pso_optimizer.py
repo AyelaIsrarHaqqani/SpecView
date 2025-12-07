@@ -48,3 +48,8 @@ k = float(max(realistic_lb[1], min(k, realistic_ub[1])))
     l = float(max(realistic_lb[2], min(l, realistic_ub[2])))
     return np.array([w, k, l], dtype=float)
 
+ """
+    Convenience: run PSO and persist the resulting parameters to a JSON file
+    so they can be shared and reused.
+    """
+
