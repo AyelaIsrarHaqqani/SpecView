@@ -29,5 +29,8 @@ lb_final = np.maximum(lb_arr, realistic_lb)
     ub_arr = np.array(ub, dtype=float).reshape(3)
 # Fix inversions by snapping to realistic bounds
     for i in range(3):
+     if lb_final[i] > ub_final[i]:
+            lb_final[i] = realistic_lb[i]
+
 
 
