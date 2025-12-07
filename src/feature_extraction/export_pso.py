@@ -32,3 +32,8 @@ def main():
     best_params, save_path = optimize_sst_params_and_save(
         subset, lb=lb, ub=ub, particles=particles, iterations=iterations, save_path=args.out
     )
+
+    w, k, l = map(int, best_params)
+    print(f"Saved PSO params to {save_path}")
+    print(f"Optimized SST Params -> window={w}, lag={l}, n_components={k}")
+
