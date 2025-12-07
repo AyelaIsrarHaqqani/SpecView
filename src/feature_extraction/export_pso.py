@@ -25,3 +25,5 @@ def main():
     pso_cfg = CONFIG["pso"]
     lb = pso_cfg["lb"]
     ub = pso_cfg["ub"]
+    particles = pso_cfg["particles"]
+    iterations = pso_cfg["iterations"]
