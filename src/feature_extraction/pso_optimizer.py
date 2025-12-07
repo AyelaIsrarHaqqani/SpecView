@@ -53,3 +53,8 @@ k = float(max(realistic_lb[1], min(k, realistic_ub[1])))
     so they can be shared and reused.
     """
 
+ import json, os, time
+    best_params = optimize_sst_params(signals, lb, ub, particles, iterations)
+    w, k, l = map(int, best_params)
+    payload = {
+
