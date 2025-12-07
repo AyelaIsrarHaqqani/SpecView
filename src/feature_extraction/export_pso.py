@@ -12,3 +12,7 @@ def main():
     parser.add_argument("--out", default="artifacts/pso_params.json", help="Path to write JSON with best params.")
     parser.add_argument("--num", type=int, default=64, help="Number of samples to use for PSO (subset).")
     args = parser.parse_args()
+
+    X, y = load_dataset(args.data)
+    if len(X) == 0:
+        raise RuntimeError(f"No samples found in {args.data}")
