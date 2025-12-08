@@ -66,3 +66,10 @@ def predict_signal(raw_signal: np.ndarray, model, scaler, label_encoder) -> Tupl
     # To tensor [1, 1, L]
     x = torch.from_numpy(spectrum_std.astype(np.float32))
     x = x.unsqueeze(1)
+
+    device = next(model.parameters()).device
+    with torch.no_grad():
+        logits = model(x.to(device))
+        probs = torch.softmax(logits, dim=1).cpu().numpy()[0]
+        pred_idx = int(np.argmax(probs))
+        confidence = float(probs[pred_idx])
