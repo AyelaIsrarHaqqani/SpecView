@@ -18,3 +18,10 @@ def load_artifacts(
     sst_params_path: str = "sst_params.json",
     device: str = None,
 ):
+    if device is None:
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = torch.device(device)
+
+    if not os.path.exists(model_path):
+        raise FileNotFoundError(f"Model checkpoint not found: {model_path}")
+    if not os.path.exists(scaler_path):
