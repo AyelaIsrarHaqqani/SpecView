@@ -53,3 +53,6 @@ def predict_signal(raw_signal: np.ndarray, model, scaler, label_encoder) -> Tupl
     w = int(sst_params["window"])  # window length
     l = int(sst_params["lag"])     # lag
     k = int(sst_params["n_components"])  # number of components
+
+    # Resample to training length
+    signal_resampled = resample_signal(raw_signal, CONFIG["resample_length"])  # 1D np array
