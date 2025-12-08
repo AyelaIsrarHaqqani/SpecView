@@ -96,3 +96,8 @@ def load_signal(file_path: str) -> np.ndarray:
         except ImportError as e:
             raise ImportError("Pillow is required to load image files. Please install 'Pillow'.") from e
         img = Image.open(file_path).convert("L")
+        return np.asarray(img, dtype=np.float32).reshape(-1)
+    # Fallback: treat any other file (e.g., .exe, .malz, .bin, .dll) as raw bytes
+    with open(file_path, "rb") as f:
+        data = np.frombuffer(f.read(), dtype=np.uint8)
+    return data
