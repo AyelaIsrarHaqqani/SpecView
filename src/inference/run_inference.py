@@ -25,3 +25,8 @@ def load_artifacts(
     if not os.path.exists(model_path):
         raise FileNotFoundError(f"Model checkpoint not found: {model_path}")
     if not os.path.exists(scaler_path):
+        raise FileNotFoundError(f"Scaler not found: {scaler_path}")
+    if not os.path.exists(encoder_path):
+        raise FileNotFoundError(f"Label encoder not found: {encoder_path}")
+    if not os.path.exists(sst_params_path):
+        raise FileNotFoundError(f"SST params file not found: {sst_params_path}")
