@@ -44,3 +44,12 @@ def load_artifacts(
     model.eval()
 
     return model, scaler, label_encoder, sst_params, device
+
+
+def predict_signal(raw_signal: np.ndarray, model, scaler, label_encoder) -> Tuple[str, float]:
+    # Load SST params from saved file
+    with open("sst_params.json", "r") as f:
+        sst_params = json.load(f)
+    w = int(sst_params["window"])  # window length
+    l = int(sst_params["lag"])     # lag
+    k = int(sst_params["n_components"])  # number of components
