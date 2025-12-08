@@ -30,3 +30,8 @@ def load_artifacts(
         raise FileNotFoundError(f"Label encoder not found: {encoder_path}")
     if not os.path.exists(sst_params_path):
         raise FileNotFoundError(f"SST params file not found: {sst_params_path}")
+
+    scaler = joblib.load(scaler_path)
+    label_encoder: Dict[str, Any] = joblib.load(encoder_path)
+    with open(sst_params_path, "r") as f:
+        sst_params = json.load(f)
