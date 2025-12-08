@@ -42,3 +42,5 @@ def load_artifacts(
     model.load_state_dict(state)
     model.to(device)
     model.eval()
+
+    return model, scaler, label_encoder, sst_params, device
