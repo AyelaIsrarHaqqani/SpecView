@@ -91,3 +91,8 @@ def load_signal(file_path: str) -> np.ndarray:
     if ext in {".txt", ".csv"}:
         return np.loadtxt(file_path)
     if ext in {".png", ".jpg", ".jpeg", ".bmp", ".tif", ".tiff"}:
+        try:
+            from PIL import Image
+        except ImportError as e:
+            raise ImportError("Pillow is required to load image files. Please install 'Pillow'.") from e
+        img = Image.open(file_path).convert("L")
