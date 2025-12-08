@@ -78,3 +78,5 @@ def predict_signal(raw_signal: np.ndarray, model, scaler, label_encoder) -> Tupl
     # keys may be saved as strings depending on pickling/JSON; normalize
     if isinstance(next(iter(int_to_str.keys())), str):
         pred_label = int_to_str[str(pred_idx)]
+    else:
+        pred_label = int_to_str[pred_idx]
