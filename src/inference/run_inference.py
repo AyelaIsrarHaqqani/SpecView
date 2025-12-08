@@ -9,3 +9,12 @@ from src.feature_extraction.sst_transform import apply_sst
 from src.utils.resampler import resample_signal
 from src.deep_learning.cnn1d import Simple1DCNN
 from src.config import CONFIG
+
+
+def load_artifacts(
+    model_path: str = "best_cnn1d.pth",
+    scaler_path: str = "scaler.pkl",
+    encoder_path: str = "label_encoder.pkl",
+    sst_params_path: str = "sst_params.json",
+    device: str = None,
+):
