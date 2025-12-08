@@ -88,3 +88,6 @@ def load_signal(file_path: str) -> np.ndarray:
     ext = os.path.splitext(file_path)[1].lower()
     if ext == ".npy":
         return np.load(file_path)
+    if ext in {".txt", ".csv"}:
+        return np.loadtxt(file_path)
+    if ext in {".png", ".jpg", ".jpeg", ".bmp", ".tif", ".tiff"}:
