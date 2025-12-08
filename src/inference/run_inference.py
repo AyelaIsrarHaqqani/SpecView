@@ -82,3 +82,9 @@ def predict_signal(raw_signal: np.ndarray, model, scaler, label_encoder) -> Tupl
         pred_label = int_to_str[pred_idx]
 
     return pred_label, confidence
+
+
+def load_signal(file_path: str) -> np.ndarray:
+    ext = os.path.splitext(file_path)[1].lower()
+    if ext == ".npy":
+        return np.load(file_path)
