@@ -62,3 +62,7 @@ def predict_signal(raw_signal: np.ndarray, model, scaler, label_encoder) -> Tupl
 
     # Standardize
     spectrum_std = scaler.transform(spectrum)
+
+    # To tensor [1, 1, L]
+    x = torch.from_numpy(spectrum_std.astype(np.float32))
+    x = x.unsqueeze(1)
