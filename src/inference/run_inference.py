@@ -80,3 +80,5 @@ def predict_signal(raw_signal: np.ndarray, model, scaler, label_encoder) -> Tupl
         pred_label = int_to_str[str(pred_idx)]
     else:
         pred_label = int_to_str[pred_idx]
+
+    return pred_label, confidence
