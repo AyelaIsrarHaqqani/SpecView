@@ -35,3 +35,10 @@ def load_artifacts(
     label_encoder: Dict[str, Any] = joblib.load(encoder_path)
     with open(sst_params_path, "r") as f:
         sst_params = json.load(f)
+
+    num_classes = len(label_encoder["str_to_int"])  # type: ignore
+    model = Simple1DCNN(in_channels=1, num_classes=num_classes)
+    state = torch.load(model_path, map_location=device)
+    model.load_state_dict(state)
+    model.to(device)
+    model.eval()
