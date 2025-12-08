@@ -73,3 +73,8 @@ def predict_signal(raw_signal: np.ndarray, model, scaler, label_encoder) -> Tupl
         probs = torch.softmax(logits, dim=1).cpu().numpy()[0]
         pred_idx = int(np.argmax(probs))
         confidence = float(probs[pred_idx])
+
+    int_to_str = label_encoder["int_to_str"]
+    # keys may be saved as strings depending on pickling/JSON; normalize
+    if isinstance(next(iter(int_to_str.keys())), str):
+        pred_label = int_to_str[str(pred_idx)]
