@@ -56,3 +56,9 @@ def predict_signal(raw_signal: np.ndarray, model, scaler, label_encoder) -> Tupl
 
     # Resample to training length
     signal_resampled = resample_signal(raw_signal, CONFIG["resample_length"])  # 1D np array
+
+    # Apply SST
+    spectrum = np.asarray(apply_sst(signal_resampled, w, l, k), dtype=np.float32).reshape(1, -1)
+
+    # Standardize
+    spectrum_std = scaler.transform(spectrum)
