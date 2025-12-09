@@ -27,6 +27,12 @@ class ResultCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text('Prediction',
+                  style: TextStyle(fontSize: 14, color: Colors.black54)),
+                  const SizedBox(height: 4),
+                  Text(
+                    label,
+                    style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
+                  ),
 
 
 
