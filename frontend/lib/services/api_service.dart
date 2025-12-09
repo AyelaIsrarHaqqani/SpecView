@@ -34,3 +34,10 @@ class ApiService {
     if (resp.statusCode != 200) {
       throw Exception('Inference failed (${resp.statusCode}): ${resp.body}');
     }
+
+    final data = json.decode(resp.body) as Map<String, dynamic>;
+    final label = (data['label'] ?? data['predicted'] ?? '').toString();
+    final conf = (data['confidence'] ?? data['score'] ?? 0.0).toString();
+    return InferenceResult(label: label, confidence: double.tryParse(conf) ?? 0.0);
+  }
+}
