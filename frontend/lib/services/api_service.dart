@@ -29,3 +29,8 @@ class ApiService {
     } else {
       throw Exception('No file bytes or path available for upload.');
     }
+
+    final resp = await http.Response.fromStream(await req.send());
+    if (resp.statusCode != 200) {
+      throw Exception('Inference failed (${resp.statusCode}): ${resp.body}');
+    }
