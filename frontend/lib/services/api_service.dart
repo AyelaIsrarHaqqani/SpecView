@@ -22,3 +22,10 @@ class ApiService {
   Future<InferenceResult> inferPlatformFile(PlatformFile file) async {
     final uri = Uri.parse('$_baseUrl/infer');
     final req = http.MultipartRequest('POST', uri);
+    if (file.bytes != null) {
+      req.files.add(http.MultipartFile.fromBytes('file', file.bytes!, filename: file.name));
+    } else if (file.path != null) {
+      req.files.add(await http.MultipartFile.fromPath('file', file.path!));
+    } else {
+      throw Exception('No file bytes or path available for upload.');
+    }
