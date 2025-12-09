@@ -21,6 +21,13 @@ class ResultCard extends StatelessWidget {
               radius: 28,
               child: Icon(Icons.shield, color: color, size: 28),
             ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text('Prediction',
+
 
 
 
