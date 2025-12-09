@@ -15,5 +15,12 @@ class ResultCard extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              backgroundColor: color.withOpacity(0.15),
+              radius: 28,
+              child: Icon(Icons.shield, color: color, size: 28),
+            ),
+
 
 
