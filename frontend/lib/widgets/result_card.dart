@@ -41,6 +41,21 @@ class ResultCard extends StatelessWidget {
                       borderRadius: BorderRadius.circular(999),
                       border: Border.all(color: color.withOpacity(0.25)),
                     ),
+                    child: Text(
+                      'Confidence: ${confidence.toStringAsFixed(2)}',
+                      style: TextStyle(color: color, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 
 
 
