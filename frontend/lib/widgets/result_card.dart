@@ -33,6 +33,15 @@ class ResultCard extends StatelessWidget {
                     label,
                     style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
                   ),
+                  const SizedBox(height: 8),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: bg,
+                      borderRadius: BorderRadius.circular(999),
+                      border: Border.all(color: color.withOpacity(0.25)),
+                    ),
+
 
 
 
