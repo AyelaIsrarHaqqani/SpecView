@@ -11,5 +11,9 @@ class ResultCard extends StatelessWidget {
     final color = isHigh ? const Color(0xFF16A34A) : const Color(0xFFF59E0B);
     final bg = isHigh ? const Color(0xFFEFFBF2) : const Color(0xFFFFF7ED);
     return Card(
+        child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
 
 
