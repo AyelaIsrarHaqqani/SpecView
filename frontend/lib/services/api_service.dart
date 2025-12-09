@@ -16,3 +16,9 @@ class ApiService {
   // Configure at runtime: flutter run --dart-define=API_BASE_URL=http://127.0.0.1:8000
   static const String _baseUrl =
       String.fromEnvironment('API_BASE_URL', defaultValue: 'http://127.0.0.1:8000');
+
+
+    // Cross-platform upload: uses bytes on Web (no file.path), path on desktop/mobile.
+  Future<InferenceResult> inferPlatformFile(PlatformFile file) async {
+    final uri = Uri.parse('$_baseUrl/infer');
+    final req = http.MultipartRequest('POST', uri);
