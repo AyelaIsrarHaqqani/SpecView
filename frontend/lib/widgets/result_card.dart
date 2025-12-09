@@ -5,13 +5,13 @@ class ResultCard extends StatelessWidget {
   final double confidence;
   const ResultCard({super.key, required this.label, required this.confidence});
 
-   @override
+  @override
   Widget build(BuildContext context) {
     final isHigh = confidence >= 0.8;
     final color = isHigh ? const Color(0xFF16A34A) : const Color(0xFFF59E0B);
     final bg = isHigh ? const Color(0xFFEFFBF2) : const Color(0xFFFFF7ED);
     return Card(
-        child: Padding(
+      child: Padding(
         padding: const EdgeInsets.all(16),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -27,7 +27,7 @@ class ResultCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text('Prediction',
-                  style: TextStyle(fontSize: 14, color: Colors.black54)),
+                      style: TextStyle(fontSize: 14, color: Colors.black54)),
                   const SizedBox(height: 4),
                   Text(
                     label,
@@ -55,9 +55,5 @@ class ResultCard extends StatelessWidget {
     );
   }
 }
-
-
-
-
 
 
